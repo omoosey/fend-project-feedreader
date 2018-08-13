@@ -96,7 +96,7 @@ $(function() {
          it('should have at least one entry', function(){
             expect($('.feed').find('.entry').length).toBeGreaterThan(0);
             // done();
-         })
+         });
     });
     /* TODO: Write a new test suite named "New Feed Selection" */
     describe('New Feed Selection', function(){
@@ -104,7 +104,13 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */ 
-         
+         beforeEach(function(done){
+            loadFeed(1, done);
+         });
+
+         it('should change the content', function(){
+            expect($('.header-title').text()).toBe('CSS Tricks');
+         });
      });
 
 }());
