@@ -82,12 +82,21 @@ $(function() {
     /* Suite to test that selecting a new feed works */
     describe('New Feed Selection', function(){
        /* Test to make sure the content on the page has changed */ 
+        let firstFeed = '';
+        let secondFeed = '';
+
          beforeEach(function(done){
-            loadFeed(1, done);
+            loadFeed(0, function(){
+                firstFeed = $('.entry').text();
+            });
+            loadFeed(1, function(){
+                secondFeed = $('.entry').text();
+                done();
+            });
          });
 
          it('should change the content', function(){
-            expect($('.header-title').text()).toBe('CSS Tricks');
+            expect(firstFeed === secondFeed).toBe(false);
          });
      });
 
