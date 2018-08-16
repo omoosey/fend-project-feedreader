@@ -50,16 +50,16 @@ $(function() {
     describe('The menu', function(){
        /* Test to make sure that the menu is hidden to begin with */ 
          it('hidden by default', function(){
-            expect($('body').attr('class')).toBe("menu-hidden");
+            expect($('body').hasClass('menu-hidden')).toBe(true);
          })
 
         /* Tests that the menu is displayed when clicked and then hidden when clicked on again */
           it('displays when clicked', function(){
             $('.menu-icon-link').click();
-            expect($('body').attr('class')).toBe("");
+            expect($('body').hasClass('menu-hidden')).toBe(false);
 
             $('.menu-icon-link').click();
-            expect($('body').attr('class')).toBe("menu-hidden");
+            expect($('body').hasClass('menu-hidden')).toBe(true);
           })
      });
         
